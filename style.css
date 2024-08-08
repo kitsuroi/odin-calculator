@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator{
+  border: 1px solid red;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calculator .display{
+  border: 1px solid red;
+}
+
+.calculator .row.top{
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculator .display{
+  flex: 4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.calculator .row{
+  margin: 0px 8px;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  gap: 8px;
+}
+
+.calculator .key{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
