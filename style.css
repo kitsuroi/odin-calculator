@@ -2,47 +2,44 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
 }
 
 .calculator{
   border: 1px solid red;
   width: 320px;
-  height: 400px;
+  height: 430px;
   display: flex;
   flex-direction: column;
+}
+
+.calculator .row.top{
+  display: flex;
+  justify-content: space-between;
   gap: 8px;
 }
 
 .calculator .display{
   border: 1px solid red;
-}
-
-.calculator .row.top{
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.calculator .display{
+  padding: 4px;
   flex: 4;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-size: 200%;
 }
 
 .calculator .row{
-  margin: 0px 8px;
+  margin: 8px;
   display: flex;
-  justify-content: space-between;
-  flex: 1;
   gap: 8px;
+  flex: 1;
 }
 
 .calculator .key{
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  font-size: 150%;
 }
