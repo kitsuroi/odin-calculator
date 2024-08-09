@@ -4,12 +4,18 @@ const subtract = (a, b) => a - b;
 
 const multiply = (a, b) => a * b;
 
-const divide = (a, b) => a / b;
+const divide = (a, b) => {
+  if (b == 0) return 'NOPE';
+  return a / b;
+};
 
-let firstNumber = '';
-let secondNumber = '';
-let operatorValue = '';
+const display = document.querySelector('.calculator .display');
+
+let firstNumber = null;
+let secondNumber = null;
+let operatorValue = null;
 let displayValue = '';
+display.textContent = '0';
 
 function operate(firstNumber, secondNumber, operator){
   if (operator === '+') return add(firstNumber, secondNumber);
@@ -19,13 +25,15 @@ function operate(firstNumber, secondNumber, operator){
 };
 
 
-const display = document.querySelector('.calculator .display');
 const numbers = document.querySelectorAll('.calculator .num');
 
 numbers.forEach((number) => {
   number.addEventListener('click', (event) => {
+    const num = event.target.textContent;
     if (displayValue.length >= 10) return;
-    displayValue += event.target.textContent;
+    if (num == '.' && displayValue.indexOf('.') > -1) return;
+    if (num == '.' && displayValue == '') displayValue += 0;
+    displayValue += num;
     display.textContent = displayValue;
   });
 });
@@ -44,16 +52,22 @@ const equals = document.querySelector('.calculator .equal');
 
 equals.addEventListener('click', () => {
   secondNumber = Number(displayValue);
+  if(firstNumber == null || secondNumber === ''){
+    display.textContent = 'ERROR';
+    return;
+  }
   displayValue = operate(firstNumber, secondNumber, operatorValue);
+  if (displayValue.toString().includes('.')) {
+    displayValue = Number(displayValue).toFixed(2)};
   display.textContent = displayValue;
 });
 
 const clear = document.querySelector('.calculator .clear');
 
 clear.addEventListener('click', () => {
-  firstNumber = '';
-  secondNumber = '';
-  operatorValue = '';
+  firstNumber = null;
+  secondNumber = null;
+  operatorValue = null;
   displayValue = '';
-  display.textContent = displayValue;
+  display.textContent = '0';
 });
